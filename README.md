@@ -1,50 +1,26 @@
 # Kong-Keycloak-Auth-in-Microservices
 MVP project full open-source stack for api gateway in microservices and complex user authentication setup
 
+This monorepo contains all the necessary components to set up a microservices architecture with Kong as an API gateway and Keycloak for authentication. It is configured to work with a CRUD application for task management.
 
-/task-manager-universe              # Пример названия для монорепозитория
-  /.github                          # Конфигурации GitHub Actions для CI/CD
-    workflows                        # Определение рабочих процессов CI/CD
-  /docs                             # Документация проекта
-    architecture.md                  # Описание архитектуры
-    onboarding.md                    # Информация для новых разработчиков
-  /packages                         # Исходный код для каждого пакета/сервиса
-    /backend-api                     # Бэкенд для API
-      /src                          # Исходный код
-        /controllers                # Контроллеры для обработки запросов
-        /models                     # Модели данных
-        /routes                     # Маршрутизация запросов
-        /services                   # Сервисы бизнес-логики
-        /utils                      # Утилиты
-        /middleware                 # Промежуточное ПО
-        index.js                    # Точка входа для бэкенда
-      Dockerfile                     # Dockerfile для контейнеризации бэкенда
-      package.json                   # Node.js зависимости и скрипты
-    /frontend                       # Фронтенд приложение
-      /public                       # Публичные файлы
-      /src                          # Исходный код React
-        /components                 # React компоненты
-        /hooks                      # React хуки
-        /contexts                   # React контексты
-        /services                   # Сервисы для работы с API
-        /styles                     # Стили CSS/SCSS
-        App.js                      # Корневой компонент приложения
-        index.js                    # Точка входа в приложение
-      Dockerfile                     # Dockerfile для фронтенда
-      package.json                   # React зависимости и скрипты
-    /keycloak-config                # Конфигурация для Keycloak
-      realm-config.json             # Конфигурация реалма
-      client-config.json            # Конфигурация клиента
-  /infra                            # Инфраструктура
-    /kubernetes                     # Конфигурации Kubernetes
-    /terraform                      # Конфигурации Terraform для инфраструктуры
-    /ansible                        # Ansible плейбуки для настройки серверов
-    /scripts                        # Скрипты для деплоя и управления инфраструктурой
-  /tools                            # Инструменты и утилиты для разработки
-    /cli                            # Кастомные CLI инструменты для разработчиков
-    /scripts                        # Скрипты для локальной разработки и тестирования
-  .gitignore                        # Исключения Git
-  .dockerignore                     # Исключения Docker
-  package.json                      # Управление скриптами и зависимостями для монорепозитория
-  README.md                         # Основная информация и гайд по монорепозиторию
-  lerna.json                        # Конфигурация Lerna для управления мульти-пакетами
+## Structure
+- `/.github` contains CI/CD workflow configurations using GitHub Actions.
+- `/docs` includes the project documentation like architecture and onboarding guides.
+- `/packages` has the source code for all services.
+  - `/backend-api` is a Node.js backend service with CRUD operations for task management.
+  - `/frontend` is a React application to interact with the backend service.
+  - `/keycloak-config` contains the realm and client configurations for Keycloak.
+- `/infra` contains infrastructure as code configurations for services deployment.
+- `/tools` holds various scripts and CLI tools for development and operational tasks.
+
+## Getting Started
+To get started with this project, follow the instructions in the `/docs/onboarding.md` document which will guide you through the process of setting up the development and production environments.
+
+## Database
+The backend API interacts with a database to store and manage tasks. The configuration and migration scripts are located within the backend service directory (`/packages/backend-api`).
+
+## Contributions
+Contributions are welcome! Please read through the contribution guidelines in `CONTRIBUTING.md` to learn how to contribute to this project.
+
+## License
+This project is open source and available under the [MIT License](LICENSE).
