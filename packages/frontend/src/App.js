@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import keycloak from './keycloak';
+import { ReactKeycloakProvider } from '@react-keycloak/web';
+import PrivateRoute from './components/PrivateRoute'; // Компонент для защищенных маршрутов
+import LoginPage from './components/LoginPage';
+import TaskList from './components/TaskList';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ReactKeycloakProvider authClient={keycloak}>
+      <Router>
+        <Switch>
+          <Route path="/login" component={LoginPage} />
+          <PrivateRoute path="/tasks" component={TaskList} />
+        </Switch>
+      </Router>
+    </ReactKeycloakProvider>
   );
 }
 
